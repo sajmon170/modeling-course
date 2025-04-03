@@ -8,8 +8,6 @@
       
       
       
-        <link rel="canonical" href="https://sajmon170.github.io/modeling-course/course/box-modeling/box-modeling/">
-      
       
         <link rel="prev" href="../../blockout/blockout/">
       
@@ -1157,17 +1155,17 @@
 <h2 id="wstepna-konfiguracja">Wstępna konfiguracja</h2>
 <h3 id="ilosc-cofniec">Ilość cofnięć</h3>
 <p>W trakcie modelowania zależy nam na jak największej elastyczności. Będziemy polegać w dużej mierze na operacji cofania. Domyślny limit 32 cofnięć szybko okaże się niewystarczający. Można go zwiększyć w menu <code>Edit</code> - <code>Preferences</code> - <code>System</code> - <code>Undo Steps</code>. Ustaw ilość na 256.</p>
-<p><img alt="Zmiana ilości cofnięć" src="/assets/img/box-modeling/config/undo.png" /></p>
+<p><img alt="Zmiana ilości cofnięć" src="../../../assets/img/box-modeling/config/undo.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Uwaga!</p>
 <p>Ilość dostępnych cofnięć wpływa na zużycie pamięci RAM</p>
 </div>
 <h3 id="autosave">Autosave</h3>
 <p>Blender automatycznie zapisuje twoje postępy co dwie minuty. Warto zmniejszyć odstęp zapisywania do minuty aby ograniczyć szkody w wypadku nagłego crashu programu.</p>
-<p><img alt="Zmiana odstępu zapisywania" src="/assets/img/box-modeling/config/autosave.png" /></p>
+<p><img alt="Zmiana odstępu zapisywania" src="../../../assets/img/box-modeling/config/autosave.png" /></p>
 <h3 id="viewport-shading">Viewport Shading</h3>
 <p>Ponieważ będziemy pracować przez większość czasu w obszarze 3D Viewport warto zmienić cieniowanie na bardziej wyraźne. W zakładce Viewport Shading wybierz MatCap a następnie zaznacz taki, który ci najbardziej odpowiada (polecam <code>clay_studio.exr</code>, nazwa MatCapu jest widoczna po najechaniu na niego myszką i poczekaniu na dymek). Zaznacz również opcję "Cavity" która sprawia, że kontury twojego modelu będą posiadały wyraźniejszy obrys.</p>
-<p><img alt="Viewport Shading" src="/assets/img/box-modeling/config/shading.png" /></p>
+<p><img alt="Viewport Shading" src="../../../assets/img/box-modeling/config/shading.png" /></p>
 <h2 id="podstawy-edit-mode">Podstawy edit mode</h2>
 <p>W Edit Mode powtarzają się narzędzia z Object Mode. W szczególności - działają skala, rotacja, translacja i zaznaczanie. Tym razem jesteśmy jednak w stanie operować nie per obiekt, lecz per wierzchołek.</p>
 <h3 id="object-mode-vs-edit-mode">Object mode vs Edit mode</h3>
@@ -1179,7 +1177,7 @@
 <p class="admonition-title">Skalowanie</p>
 <p>Skala nadana w Object Mode wpływa na narzędzia w Edit Mode! Jeżeli obiekt nie jest przeskalowany jednolicie (np. przeskalujemy tylko po osi X) to każda transformacja jaką będziemy próbować wykonać w Edit Mode będzie się wydawać rozciągnięta!
 W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to otrzymamy ostrzeżenie w status barze. Jest to pomocne gdy np. Bevel ucina nasz mesh w niejednolity sposób.</p>
-<p><img alt="Skalowanie w Object Mode" src="/assets/img/box-modeling/obj-mode/scaling.png" /></p>
+<p><img alt="Skalowanie w Object Mode" src="../../../assets/img/box-modeling/obj-mode/scaling.png" /></p>
 </div>
 <h2 id="skadowe-modelu-3d">Składowe modelu 3D</h2>
 <ul>
@@ -1188,11 +1186,11 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <li>Ściany składają się z <strong>krawędzi</strong> (<strong>edges</strong>)</li>
 <li>Krawędzie składają się z <strong>wierzchołków</strong> (<strong>vertex/vertices</strong>)</li>
 </ul>
-<p><img alt="Mesh i jego składowe" src="/assets/img/box-modeling/basic-info/mesh.png" /></p>
+<p><img alt="Mesh i jego składowe" src="../../../assets/img/box-modeling/basic-info/mesh.png" /></p>
 <ul>
 <li>Wierzchołki dodatkowo posiadają <strong>normalne</strong> (<strong>normals</strong>) opisujące sposób cieniowania. Dokładny opis normalnych znajduje się w dalszej części materiału.</li>
 </ul>
-<p><img alt="Normalne" src="/assets/img/box-modeling/basic-info/normals.png" /></p>
+<p><img alt="Normalne" src="../../../assets/img/box-modeling/basic-info/normals.png" /></p>
 <ul>
 <li>Ściany mogą być:<ul>
 <li>Trójkątami (triangle - <strong>Tri</strong>)</li>
@@ -1201,19 +1199,19 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 </ul>
 </li>
 </ul>
-<p><img alt="Rodzaje ścian" src="/assets/img/box-modeling/basic-info/poly-types.png" /></p>
+<p><img alt="Rodzaje ścian" src="../../../assets/img/box-modeling/basic-info/poly-types.png" /></p>
 <ul>
 <li>Sąsiednie ściany złożone z quadów tworzą pętle. Można je zaznaczać najeżdżając na pożądaną krawędź i klikając <code>Alt</code> + <code>Lewy Przycisk Myszy</code>.</li>
 </ul>
-<p><img alt="Pętle" src="/assets/img/box-modeling/basic-info/loops.png" /></p>
+<p><img alt="Pętle" src="../../../assets/img/box-modeling/basic-info/loops.png" /></p>
 <ul>
 <li>Jeżeli analizujemy sposób ułożenia pętli z punktu widzenia ścian to mówimy o <strong>Poly Flow</strong></li>
 </ul>
-<p><img alt="Poly Flow" src="/assets/img/box-modeling/basic-info/poly-flow.png" /></p>
+<p><img alt="Poly Flow" src="../../../assets/img/box-modeling/basic-info/poly-flow.png" /></p>
 <ul>
 <li>Jeżeli analizujemy sposób ułożenia pętli z punktu widzenia krawędzi to mówimy o <strong>Edge Flow</strong></li>
 </ul>
-<p><img alt="Edge Flow" src="/assets/img/box-modeling/basic-info/edge-flow.png" /></p>
+<p><img alt="Edge Flow" src="../../../assets/img/box-modeling/basic-info/edge-flow.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Zapamiętaj</p>
 <p>Pętle utworzone są z quadów.</p>
@@ -1228,13 +1226,13 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <li>Skrót: <code>E</code></li>
 </ul>
 <p>Extrude (wytłaczanie) wyciąga zaznaczoną przez nas ścianę do przodu, a wokół niej kładzie nową pętlę geometrii.</p>
-<p><img alt="Extrude" src="/assets/img/box-modeling/basic-tools/extrude.png" /></p>
+<p><img alt="Extrude" src="../../../assets/img/box-modeling/basic-tools/extrude.png" /></p>
 <h3 id="inset">Inset</h3>
 <ul>
 <li>Skrót: <code>I</code></li>
 </ul>
 <p>Inset przenosi zaznaczoną przez nas ścianę do środka, a wokół niej kładzie nową pętlę geometrii.</p>
-<p><img alt="Inset" src="/assets/img/box-modeling/basic-tools/inset.png" /></p>
+<p><img alt="Inset" src="../../../assets/img/box-modeling/basic-tools/inset.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Uwaga!</p>
 <p>Na obecnych zajęciach Inset będzie głównym narzędziem do ręcznego dodawania przez nas pętli.</p>
@@ -1244,7 +1242,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <li>Skrót: <code>Ctrl</code> + <code>R</code></li>
 </ul>
 <p>Loop Cut przecina wybraną przez nas pętlę poligonów na wiele mniejszych pętli. Możemy kontrolować ilość przecięć za pomocą przesuwania <code>Scroll</code> na myszce.</p>
-<p><img alt="Loop Cut" src="/assets/img/box-modeling/basic-tools/loop-cut.png" /></p>
+<p><img alt="Loop Cut" src="../../../assets/img/box-modeling/basic-tools/loop-cut.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Uwaga!</p>
 <p>Loop Cut działa tylko na pętlach, wymaga więc od nas pracowania na geometrii bazującej na quadach.</p>
@@ -1258,7 +1256,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <li>Skrót: <code>Ctrl</code> + <code>B</code></li>
 </ul>
 <p>Bevel zaokgrągla zaznaczoną przez nas krawędź poprzez dodanie geometrii do pętli, na której ona leży.</p>
-<p><img alt="Bevel" src="/assets/img/box-modeling/basic-tools/bevel.png" /></p>
+<p><img alt="Bevel" src="../../../assets/img/box-modeling/basic-tools/bevel.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Bevel może zniszczyć topologię</p>
 <p>Bevel zmienia ilość krawędzi na bocznych ścianach. Zauważ, że na przykładowym zdjęciu ściana boczna będąca quadem się zmieniła w n-gon (siedmiokąt)!</p>
@@ -1270,16 +1268,16 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <div class="admonition tip">
 <p class="admonition-title">Kiedy Bevel jest bezpieczny</p>
 <p>Bevel niszczy topologię opartą o quady, jeżeli użyjemy go na niedomkniętej pętli krawędzi (np. gdy zaznaczymy pojedynczą krawędź i zignorujemy jej sąsiadów). Jeżeli pętla krawędzi jest domknięta gdy wciśniemy <code>Ctrl</code> + <code>B</code> to Bevel utworzy same nowe quady.</p>
-<p><img alt="Bevel" src="/assets/img/box-modeling/basic-tools/bevel-comparison.png" /></p>
+<p><img alt="Bevel" src="../../../assets/img/box-modeling/basic-tools/bevel-comparison.png" /></p>
 </div>
 <h3 id="bridge-faces-loft">Bridge Faces (Loft)</h3>
 <ul>
 <li>Przycisk: <code>Prawy przycisk myszy</code> - <code>Bridge Faces</code> bądź <code>Bridge Edge Loops</code> w zależności od trybu wyboru geometrii (krawędzie vs ściany)</li>
 </ul>
 <p>Bridge Faces łączy zaznaczone przez nas ściany generując między nimi nowe pętle poligonów.</p>
-<p><img alt="Bridge faces" src="/assets/img/box-modeling/basic-tools/bridge.png" /></p>
+<p><img alt="Bridge faces" src="../../../assets/img/box-modeling/basic-tools/bridge.png" /></p>
 <p>Jednym z głównych zastosowań tego narzędzia jest również przebijanie dziur w meshu.</p>
-<p><img alt="Bridge faces - tworzenie dziur" src="/assets/img/box-modeling/basic-tools/bridge-hole.png" /></p>
+<p><img alt="Bridge faces - tworzenie dziur" src="../../../assets/img/box-modeling/basic-tools/bridge-hole.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Bridge Faces + Inset = ❤️</p>
 <p>Narzędzie Inset idealnie się nadaje do wydzielenia ścian służących do przebicia dziury w ramach Bridge Faces</p>
@@ -1290,7 +1288,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 </ul>
 <p>Tryb edycji proporcjonalnej pozwala na manipulację wieloma wierzchołkami na raz znajdującymi się w zadanym obszarze. Rozmiar tego obszaru można kontrolować przesuwając <code>Scroll</code>.</p>
 <video controls>
-<source src="/assets/vid/box-modeling/basic-tools/proportional-editing.webm" type="video/mp4">
+<source src="../../../assets/vid/box-modeling/basic-tools/proportional-editing.webm" type="video/mp4">
 </video>
 
 <h2 id="dodatkowe-narzedzia">Dodatkowe narzędzia</h2>
@@ -1301,7 +1299,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <div class="admonition warning">
 <p class="admonition-title">Uwaga!</p>
 <p>Częstą sytuacją w której wykorzystujemy grid fill jest pozbycie się n-gona z góry cylindra, aby móc następnie przecinać ten cylinder za pomocą narzędzia loop cut. Jeżeli nie wyrównamy wynikowej geometrii za pomocą parametru offset to zmienimy edge flow i tym samym dodawane przez nas pętle nie zamkną się w oczekiwanym miejscu!</p>
-<p><img alt="Grid fill" src="/assets/img/box-modeling/basic-tools/grid-fill.png" /></p>
+<p><img alt="Grid fill" src="../../../assets/img/box-modeling/basic-tools/grid-fill.png" /></p>
 <p>Przykład: próba użycia loop cut na wyrównanym vs niewyrównanym grid fill. Zwróć uwagę na górną a dolną ścianę (offset między nimi różni się tylko o 1). Na obu rysunkach kolorem zaznaczono poly flow pomiędzy podstawą a ścianami bocznymi.</p>
 </div>
 </li>
@@ -1319,18 +1317,18 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <p class="admonition-title">Zadanie 1</p>
 <p>Dodaj losowe obiekty na scenę i przetestuj na nich wszystkie poznane narzędzia po kolei. Zbuduj abstrakcyjną scenę.</p>
 </div>
-<p><img alt="Abstrakcyjne formy" src="/assets/ref/box-modeling/abstract/abstract.png" /></p>
+<p><img alt="Abstrakcyjne formy" src="../../../assets/ref/box-modeling/abstract/abstract.png" /></p>
 <h2 id="smooth-shading">Smooth shading</h2>
 <p>Nasze modele nie wyglądają gładko - gdy się na nie patrzymy widzimy dokładnie gdzie się rozpoczynają i kończą ściany. Możemy próbować zwiększyć ich liczbę w modelu, lecz zwiększamy w ten sposób znacząco liczbę geometrii. Ponadto, jak zbliżymy się zbytnio do obiektu to pojedyncze ściany będą znowu widoczne.</p>
 <p>Jesteśmy w stanie jednak zmienić sam sposób cieniowania na tzw. "smooth shading". Kliknij prawym na dowolny obiekt w Object Mode a następnie wybierz opcję "shade smooth" żeby zobaczyć efekt.</p>
-<p><img alt="Shade smooth - UV Sphere" src="/assets/img/box-modeling/shading/shade-smooth.png" /></p>
+<p><img alt="Shade smooth - UV Sphere" src="../../../assets/img/box-modeling/shading/shade-smooth.png" /></p>
 <h3 id="problemy-smooth-shading">Problemy smooth shading</h3>
 <p>O ile na wybranym wyżej UV Sphere smooth shading wygląda dobrze sprawa się zmienia gdy wybierzemy bardziej kanciasty model. Sprawdźmy jak smooth shading będzie wyglądał dla cylindra...</p>
-<p><img alt="Shade smooth - Cylinder" src="/assets/img/box-modeling/shading/flat-vs-smooth.png" /></p>
+<p><img alt="Shade smooth - Cylinder" src="../../../assets/img/box-modeling/shading/flat-vs-smooth.png" /></p>
 <p>Wynikowe cieniowanie jest dziwne - jest gładkie przejście między ścianami bocznymi a podstawami, mimo że między nimi jest kąt 90 stopni. Całość wygląda jakby Blender próbował cieniować cylinder jak gładką sferę mimo że nią nie jest. Dlaczego tak się dzieje?</p>
 <h3 id="normalne">Normalne</h3>
 <p>We wcześniejszej sekcji wspomniano, że model poza wierzchołkami posiada również normalne, które odpowiadają za cieniowanie. Są one kluczem do zrozumienia tego co się właśnie stało. Aby włączyć widok normalnych należy w Edit Mode wejść w <code>Mesh Edit Mode Overlays</code> i zaznaczyć <code>Display Split Normals</code>.</p>
-<p><img alt="Shade smooth - Cylinder" src="/assets/img/box-modeling/shading/display-normals.png" /></p>
+<p><img alt="Shade smooth - Cylinder" src="../../../assets/img/box-modeling/shading/display-normals.png" /></p>
 <p>Po kliknięciu we wskazane na zdjęciu przycisku we viewporcie przy każdym wierzchołku pokażą się nasze normalne.</p>
 <h3 id="normalne-wierzchokowe-vertex-normals">Normalne wierzchołkowe (Vertex normals)</h3>
 <div class="admonition note">
@@ -1338,16 +1336,16 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <p>Nie musisz rozumieć tej sekcji w całości ani znać jej na pamięć żeby korzystać z Blendera. Służy ona przedstawieniu niskopoziomowych źródeł problemu, z którym mamy styczność w programie.</p>
 </div>
 <p>W matematyce normalna oznacza wektor (zwykle unormowany) prostopadły do ściany. Z fizyki możemy pamiętać, że jeżeli znamy normalną do powierzchni i wektor promienia światła to możemy obliczyć jasność tej powierzchni na podstawie prawa Lamberta.</p>
-<p><img alt="Prawo Lamberta" src="/assets/img/box-modeling/shading/lambert-cosine-law.png" /></p>
+<p><img alt="Prawo Lamberta" src="../../../assets/img/box-modeling/shading/lambert-cosine-law.png" /></p>
 <p>Na zdjęciu jednak różowe wektory nie są ani prostopadłe ani przypisane do ściany tylko do wierzchołków.</p>
 <p>Dzieje się tak dlatego, że normalne w grafice komputerowej nie dotyczą tak naprawdę modelowanej powierzchni, tylko hipotetycznej, wirtualnej z pożądanym przez nas cieniowaniem.</p>
 <p>Aby jeszcze bardziej namieszać nam w głowie porównajmy jak wyglądają normalne w cieniowaniu płaskim vs w cieniowaniu gładkim.</p>
-<p><img alt="Shade smooth - Cylinder" src="/assets/img/box-modeling/shading/flat-vs-smooth-normals.png" /></p>
+<p><img alt="Shade smooth - Cylinder" src="../../../assets/img/box-modeling/shading/flat-vs-smooth-normals.png" /></p>
 <p>W cieniowaniu płaskim każdy wierzchołek posiada wiele normalnych... co?</p>
 <h3 id="cieniowanie-phonga">Cieniowanie Phonga</h3>
 <p>Łatwo zauważyć na zdjęciu wyżej, że w płaskim cieniowaniu każdy wierzchołek ma tyle normalnych, ile jest obok ścian. Dzieje się tak dlatego, że w ramach przetwarzania pojedynczej ściany przez kartę graficzną z wierzchołka będzie brana ta normalna, która tej ściany dotyczy.</p>
 <p>Renderer viewportu Blendera (czyli kod, który go wyświetla) pobiera dla każdej ściany normalne z każdego wierzchołka, a następnie interpoluje je w każdym pikselu po kolei. Dzięki temu jesteśmy w stanie stosować prawo Lamberta per-piksel, a nie per całą powierzchnię co pozwala na późniejsze uzyskanie wygładzonego cieniowania.</p>
-<p><img alt="Interpolacja normalnych" src="/assets/img/box-modeling/normals/2.png" /></p>
+<p><img alt="Interpolacja normalnych" src="../../../assets/img/box-modeling/normals/2.png" /></p>
 <p>Na powyższym obrazku kolorem szarym została zaznaczona wirtualna powierzchnia idealnego cieniowania. Interpolowane normalne są do niej faktycznie prostopadłe. Dzięki temu patrząc się na UV sphere po smooth shadingu mamy wrażenie, że wewnątrz niej jest nieskończenie wiele geometrii. Cieniowanie nie dotyczy UV sphere, tylko idealnie gładkiej hipotetycznej sfery!</p>
 <div class="admonition note">
 <p class="admonition-title">Flat shading</p>
@@ -1369,7 +1367,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <p>Dziwne efekty widziane w ramach operacji shade smooth są wynikiem uśredniania normalnych przypisanych do wierzchołków.</p>
 </div>
 <p>Jeżeli to my kontrolujemy geometrię, to z punktu widzenia użytkownika Blendera wystarczy wymusić, żeby normalne uśredniały się do wartości podobnych we flat shadingu. Musimy więc dodać jakąś geometrię. Krawędzie dodawane do wymuszenia odpowiedniego uśredniania to tzw. <strong>holding edges</strong>.</p>
-<p><img alt="Holding edges" src="/assets/img/box-modeling/shading/holding-edges.png" /></p>
+<p><img alt="Holding edges" src="../../../assets/img/box-modeling/shading/holding-edges.png" /></p>
 <p>W przypadku naszego cylindra - wystarczy dodać loop cut obok krawędzi oraz inset, aby naprawić w tym rejonie normalne. Na obrazku dodane krawędzie zostały zaznaczone na zółto.</p>
 <div class="admonition example">
 <p class="admonition-title">Zadanie 2</p>
@@ -1378,7 +1376,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <h3 id="odwrocone-normalne">Odwrócone normalne</h3>
 <p>Istnieje sporo sytuacji, w których możemy się natknąć na tzw. "odwrócone normalne". Powodują one odwrócone cieniowania (oświetlone ściany stają się ciemne, ściany w cieniu stają się jasne).</p>
 <p>Aby sprawdzić obecność odwróconych ścian należy włączyć odpowiedni overlay we viewportcie klikając w <code>Viewport Overlays</code> - <code>Face Orientation</code>.</p>
-<p><img alt="Face Orientation" src="/assets/img/box-modeling/config/face-orientation.png" /></p>
+<p><img alt="Face Orientation" src="../../../assets/img/box-modeling/config/face-orientation.png" /></p>
 <p>Jeżeli nasz mesh nie posiada odwróconych normalnych to nic się nie zmieni. W przeciwnym wypadku złe ściany zostaną zaznaczone na czerwono.</p>
 <div class="admonition tip">
 <p class="admonition-title">Face Orientation Overlay</p>
@@ -1389,14 +1387,14 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <p class="admonition-title">Odwrócone normalne za pomocą extrude</p>
 <p>Na odwrócone normalne bardzo łatwo jest się natrafić, jeżeli będziemy wytłaczać pojedyncze krawędzie.</p>
 <p><video controls>
-<source src="/assets/vid/box-modeling/shading/extrude.webm" type="video/mp4">
+<source src="../../../assets/vid/box-modeling/shading/extrude.webm" type="video/mp4">
 </video></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Odwrócone normalne za pomocą skalowania</p>
 <p>Odwrócone normalne możemy również uzyskać, jeżeli przeskalujemy cały obiekt przez ujemną wartość</p>
 <p><video controls>
-<source src="/assets/vid/box-modeling/shading/scale.webm" type="video/mp4">
+<source src="../../../assets/vid/box-modeling/shading/scale.webm" type="video/mp4">
 </video></p>
 </div>
 <div class="admonition tip">
@@ -1436,7 +1434,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <p>Spora część obiektów z jakimi wchodzimy w interakcję na co dzień posiada symetrię. Wykorzystując symetrię w modelowaniu 3D skrócimy sobie pracę o połowę - w końcu będziemy musieli modelować tylko jedną stronę obiektu. Ponadto, obie strony będą dzięki temu idealnie równe.</p>
 <p>Aby wykorzystać symetrię w modelowaniu należy przeciąć obiekt w pół i dodać modyfikator Mirror. W tym celu w obszarze Properties wybierz zakładkę Modifiers (ikona klucza ślusarskiego) a następnie kliknij <code>Add Modifier</code> i zacznij pisać "mirror" aby wyszukać stosowny modyfikator.</p>
 <video controls>
-<source src="/assets/vid/box-modeling/mirror/mirror.webm" type="video/mp4">
+<source src="../../../assets/vid/box-modeling/mirror/mirror.webm" type="video/mp4">
 </video>
 
 <div class="admonition note">
@@ -1445,7 +1443,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 </div>
 <p>Domyślnie obie połówki odbijanego mesha nie są sklejone. Jeżeli spróbujemy poruszyć wierzchołkami bądź całym meshem z dala od płaszczyzny odbicia to rozerwiemy nasz mesh. Aby mesh był sklejony należy w opcjach nałożonego modyfikatora zaznaczyć "Clipping".</p>
 <video controls>
-<source src="/assets/vid/box-modeling/mirror/clipping.webm" type="video/mp4">
+<source src="../../../assets/vid/box-modeling/mirror/clipping.webm" type="video/mp4">
 </video>
 
 <h2 id="modelowanie-kubka">Modelowanie kubka</h2>
@@ -1453,7 +1451,7 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <p class="admonition-title">Zadanie 3</p>
 <p>Przeanalizuj referencje i zamodeluj na ich podstawie kubek. Zwróć uwagę na miejsca, które będą wymagać rozmieszczenia głównych pętli.</p>
 </div>
-<p><img alt="Kubek" src="/assets/ref/box-modeling/mug/mug.png" /></p>
+<p><img alt="Kubek" src="../../../assets/ref/box-modeling/mug/mug.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Porada - umieszczanie pętli</p>
 <p>Umieszczaj na modelu pętle znalezione na bazie referencji za pomocą narzędzia Inset.</p>
@@ -1473,41 +1471,41 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 </details>
 <details class="tip">
 <summary>Podpowiedź 2 - Główne pętle kubka</summary>
-<p><img alt="Pętle kubka" src="/assets/ref/box-modeling/mug/mug-loops.png" /></p>
+<p><img alt="Pętle kubka" src="../../../assets/ref/box-modeling/mug/mug-loops.png" /></p>
 </details>
 <details class="tip">
 <summary>Podpowiedź 3 - Modelowanie krok po kroku</summary>
 <p>Dodaj cylinder i dopasuj wymiary (w edit mode, nie w object mode!) do proporcji referencji</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/1.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/1.png" /></p>
 <p>Usuń n-gony na cylindrze - wypełnij przestrzeń między pętlami za pomocą narzędzia grid fill. Pamiętaj o wyrównaniu wynikowej geometrii do osi za pomocą parametru offset.</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/2.png" />    </p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/2.png" />   </p>
 <p>Wyrównaj gęstość geometrii na powierzchni bocznej cylindra za pomocą narzędzia loop cut (ściany powinny wyglądać jak kwadraty). Następnie zaznacz grubość ścian kubka za pomocą inset tak aby pasowała do referencji i wytłocz dziurę w kubku za pomocą extrude. Pamiętaj o wyrównaniu gęstości geometrii wewnątrz kubka!</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/4.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/4.png" /></p>
 <p>Zawęź kubek za pomocą trybu proportional editing tak aby pasował do referencji</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/5.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/5.png" /></p>
 <p>Dodaj pętlę od formy ucha kubka. Chcemy móc później użyć symetrii za pomocą modyfikatora mirror, co będzie wymagało przecięcia kubka w pół. Upewnij się teraz, że dodana pętla jest wyrównana z jakąś osią</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/6.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/6.png" /></p>
 <p>Wytłocz formę od ucha. Wyrównaj na niej gęstość geometrii</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/7.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/7.png" /></p>
 <p>Dodaj pętlę od grubości ucha. Następnie przebij tę formę za pomocą narzędzia bridge edge loops/bridge faces</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/8.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/8.png" /></p>
 <p>Przetnij kubek w pół i nałóż modyfikator mirror</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/9.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/9.png" /></p>
 <p>Wymodeluj kształt ucha za pomocą proportional editing i ręcznego przesuwania geometrii. Przesuwaj i usuwaj pętle na uchu w razie potrzeby.</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/10.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/10.png" /></p>
 <p>Zaokrąglij stosowne krawędzie kubka za pomocą narzędzia bevel</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/11.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/11.png" /></p>
 <p>Dodaj spód kubka</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/12.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/12.png" /></p>
 <p>Nasz model jest już gotowy!</p>
-<p><img alt="Modelowanie kubka" src="/assets/img/box-modeling/mug/finished.png" /></p>
+<p><img alt="Modelowanie kubka" src="../../../assets/img/box-modeling/mug/finished.png" /></p>
 </details>
 <h2 id="modelowanie-krzesa">Modelowanie krzesła</h2>
 <div class="admonition example">
 <p class="admonition-title">Zadanie 4</p>
 <p>Przeanalizuj referencje i zamodeluj na ich podstawie krzesło. Ponownie - zwróć uwagę na miejsca, które będą wymagać rozmieszczenia głównych pętli.</p>
 </div>
-<p><img alt="Kubek" src="/assets/ref/box-modeling/chair/chair.png" /></p>
+<p><img alt="Kubek" src="../../../assets/ref/box-modeling/chair/chair.png" /></p>
 <details class="tip">
 <summary>Podpowiedź 1 - Analiza referencji</summary>
 <ul>
@@ -1530,40 +1528,40 @@ W Blenderze 4.4 jeżeli nałożymy niejednolitą transformację w Object Mode to
 <details class="tip">
 <summary>Podpowiedź 2 - Modelowanie krok po kroku</summary>
 <p>Rozpocznij od modelowania siedzenia. Nadaj tyle geometrii za pomocą loop cut, aby móc później dodać pętle od nóg</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/1.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/1.png" /></p>
 <p>Dodaj pętle od desek nad nogami </p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/2.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/2.png" /></p>
 <p>Dodaj pętle od nóg</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/3.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/3.png" /></p>
 <p>Dodaj pętle od podparcia</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/4.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/4.png" /></p>
 <p>Podziel model na pół i wykorzystaj modyfikator mirror</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/5.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/5.png" /></p>
 <p>Dodaj geometrię tak, aby można było dodać pętle od otworów w podparciu</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/6.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/6.png" /></p>
 <p>Dodaj pętle od otworów</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/7.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/7.png" /></p>
 <p>Dodaj detale do podparcia</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/8.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/8.png" /></p>
 <p>Na referencji nogi są okrągłe. Dodaj pętle, aby podstawą nogi nie był kwadrat tylko ośmiokąt. Następnie wykorzystaj dodaną geometrię, żeby zaokrąglić nogi.</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/9.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/9.png" /></p>
 <p>Zauważ, że dodając te pętle wyrównaliśmy również gęstość geometrii na siedzeniu. Oddal nogi krzesła od środka modelu. Możesz użyć do tego narzędzia scale.</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/10.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/10.png" /></p>
 <p>Dodaj na nogach pętle od połączenia z deskami między nimi</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/11.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/11.png" /></p>
 <p>Dodaj deski według utworzonych poprzednio pętli. Zaznacz następnie pętlę od środkowej deski i również ją utwórz.</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/12.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/12.png" /></p>
 <p>Przy dodawaniu geometrii na granicy modyfikatora mirror należy uważać na ściany wewnątrz ścian. Zobacz czy u ciebie nie ma takiej geometrii za pomocą widoku x-ray. Jeżeli jest to ją usuń.</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/13.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/13.png" /></p>
 <p>Dodaj brakujące detale do nóg i do siedzenia. Pamiętaj o zakrzywieniu powierzchni za pomocą trybu proportional editing, oraz o zaokrągleniu za pomocą bevel.</p>
-<p><img alt="Modelowanie krzesła" src="/assets/img/box-modeling/chair/14.png" /></p>
+<p><img alt="Modelowanie krzesła" src="../../../assets/img/box-modeling/chair/14.png" /></p>
 </details>
 <h2 id="modelowanie-parasola">Modelowanie parasola</h2>
 <div class="admonition example">
 <p class="admonition-title">Zadanie 5 - praca domowa</p>
 <p>Przeanalizuj referencje i zamodeluj parasol.</p>
 </div>
-<p><img alt="Parasol" src="/assets/ref/box-modeling/umbrella/umbrella.png" /></p>
+<p><img alt="Parasol" src="../../../assets/ref/box-modeling/umbrella/umbrella.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Porada 1</p>
 <p>Sprawdź obiekty dostępne w menu Add. Wybierz ten, który uważasz za najbliższy parasolowi</p>
