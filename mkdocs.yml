@@ -1,0 +1,37 @@
+site_name: Modelowanie 3D w Blenderze
+copyright: 2025 Szymon Zadworny, Koło Naukowe Vertex PG
+extra:
+  generator: false
+
+nav:
+  - Strona domowa: index.md
+  - O kursie: about.md
+  - Przygotowanie środowiska:
+    - Instalacja Blendera: env/install.md
+    - Konfiguracja Blendera: env/config.md
+  - Kurs:
+    - Wstęp - blockout: course/blockout/blockout.md
+    - Box modeling - podstawy: course/box-modeling/box-modeling.md 
+
+theme:
+  logo: assets/logo_white_bold.png
+  name: material
+  
+  palette:
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+    - scheme: default
+      primary: deep orange
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
