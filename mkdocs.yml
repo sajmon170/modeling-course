@@ -5,9 +5,7 @@ extra:
 
 nav:
   - Strona domowa: index.md
-  - O kursie: about.md
   - Przygotowanie środowiska:
-    - Instalacja Blendera: env/install.md
     - Konfiguracja Blendera: env/config.md
   - Kurs:
     - Wstęp - blockout: course/blockout/blockout.md
