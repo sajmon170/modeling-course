@@ -225,4 +225,4 @@ Blender posiada domyślną ścieżkę w której szuka różnych bibliotek. Możn
 Jeżeli przeniesiemy do tego katalogu plik `.blend` zawierający żądane przez nas assety będziemy w stanie z nich skorzystać w każdym innym miejscu. Taki plik to wspomniany wcześniej asset library.
 
 !!! example "Zadanie 6"
-	Przenieś plik <a href="/assets/blend/mech-kit.blend">mech-kit.blend</a> do swojego katalogu z assetami. Następnie znajdź stosowne referencje w internecie i zbuduj własnego mecha. Powodzenia!
+	Przenieś plik <a href="../../../assets/blend/mech-kit.blend">mech-kit.blend</a> do swojego katalogu z assetami. Następnie znajdź stosowne referencje w internecie i zbuduj własnego mecha. Powodzenia!
