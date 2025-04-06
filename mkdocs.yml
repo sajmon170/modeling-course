@@ -2,6 +2,9 @@ site_name: Modelowanie 3D w Blenderze
 copyright: 2025 Szymon Zadworny, Koło Naukowe Vertex PG
 extra:
   generator: false
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/sajmon170
 
 nav:
   - Strona domowa: index.md
@@ -14,6 +17,10 @@ nav:
 theme:
   logo: assets/logo_white_bold.png
   name: material
+  language: pl
+
+  features:
+    - navigation.footer
   
   palette:
     - scheme: slate
