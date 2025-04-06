@@ -8,8 +8,8 @@ nav:
   - Przygotowanie środowiska:
     - Konfiguracja Blendera: env/config.md
   - Kurs:
-    - Wstęp - blockout: course/blockout/blockout.md
-    - Box modeling - podstawy: course/box-modeling/box-modeling.md 
+    - Wstęp - blockout: course/blockout.md
+    - Box modeling - podstawy: course/box-modeling.md 
 
 theme:
   logo: assets/logo_white_bold.png
