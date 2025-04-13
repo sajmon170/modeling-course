@@ -13,6 +13,7 @@ nav:
   - Kurs:
     - Wstęp - blockout: course/blockout.md
     - Box modeling - podstawy: course/box-modeling.md 
+    - Modelowanie organiczne. Deformacje: course/organic-modeling.md 
 
 theme:
   logo: assets/logo_white_bold.png
