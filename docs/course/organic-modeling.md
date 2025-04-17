@@ -136,22 +136,22 @@ Gdy mamy już ułożone pętle możemy teraz deformować nasz mesh w prosty spos
 Nasza twarz posiada za mało geometrii, przez co nasze deformacje w ramach Sculpt Mode są ograniczone. Gdzie jednak mamy kłaść dodatkowe pętle? Skąd je brać?
 
 !!! tip "Analiza referencji"
-	Analiza referencji jest **kluczowa** w modelowaniu organicznym. Nawet jeżeli pamiętamy na oko jak wygląda bazowo model to często nie pamiętamy jak wygląda w trakcie. Niech jako przykład posłuży twarz człowieka.
+	Analiza referencji jest **kluczowa** w modelowaniu organicznym. Nawet jeżeli pamiętamy jak wygląda w przybliżeniu dany obiekt to często nie pamiętamy jak wygląda w trakcie jakichś deformacji. Niech jako przykład posłuży twarz człowieka.
 	
 	![Twarze](../assets/ref/organic-modeling/face/faces.png)
 
-	Zapamiętaliśmy oczy i usta. Bardziej oczywiste jest to, o odstającym nosie. Mniej oczywiste jest jednak to, że zapomnieliśmy postawić pętlę od nosa i policzków, idącą wzdłuż ruchu mięśni twarzy. Robi się ona w pełni widoczna dopiero w trakcie uśmiechu (pomarańczowa pętla)
+    Pamiętaliśmy wcześniej o oczach i ustach. Oczywistym jest, że zapomnieliśmy o odstającym nosie. Mniej oczywiste jest jednak to, że zapomnieliśmy postawić pętlę przechodzącą przez nos i policzki, wzdłuż ruchu mięśni twarzy. Robi się ona w pełni widoczna dopiero w trakcie uśmiechu (pomarańczowa pętla).
 
 	![Pętle twarzy](../assets/ref/organic-modeling/face/loops.png)
 	
 	Należy ponadto pamiętać o proporcjach:
 
-	- wysokość ok. 2x większa od szerokości
+	- wysokość głowy ok. 2x większa od szerokości
     - oczy i nos dzielą twarz na równe trzy części
 	- wysokość twarzy pod brwiami równa wysokości dwóch nosów
 	- itd...
 	
-	Po więcej informacji dotyczących proporcji i rozmieszczenia form twarzy warto zajrzeć do zewnętrznych źródeł (np. książki o anatomii dla artystów)
+	Po więcej informacji dotyczących proporcji i rozmieszczenia form twarzy warto zajrzeć do zewnętrznych źródeł (np. książek o anatomii)
 
 !!! tip "Część 1 - ułożenie pętli"
 	Dodaj na scenę kostkę i nałóż na nią modyfikator Mirror (pamiętaj o zaznaczeniu opcji "Clipping"). Zmień jej rozmiar tak, aby pasował do ogólnych proporcji twarzy.
