@@ -1,0 +1,1490 @@
+
+<!doctype html>
+<html lang="pl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../organic-modeling/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Subdivision modeling. Przekierowywanie pętli - Modelowanie 3D w Blenderze</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#subdivision-modeling-przekierowywanie-petli" class="md-skip">
+          Przejdź do treści
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Nagłówek">
+    <a href="../.." title="Modelowanie 3D w Blenderze" class="md-header__button md-logo" aria-label="Modelowanie 3D w Blenderze" data-md-component="logo">
+      
+  <img src="../../assets/logo_white_bold.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelowanie 3D w Blenderze
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Subdivision modeling. Przekierowywanie pętli
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Szukaj" placeholder="Szukaj" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Szukaj">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Wyczyść" aria-label="Wyczyść" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicjowanie wyszukiwania
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Nawigacja" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelowanie 3D w Blenderze" class="md-nav__button md-logo" aria-label="Modelowanie 3D w Blenderze" data-md-component="logo">
+      
+  <img src="../../assets/logo_white_bold.png" alt="logo">
+
+    </a>
+    Modelowanie 3D w Blenderze
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Strona domowa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Przygotowanie środowiska
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Przygotowanie środowiska
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../env/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Konfiguracja Blendera
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kurs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Kurs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blockout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wstęp - blockout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../box-modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Box modeling - podstawy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../organic-modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modelowanie organiczne. Deformacje
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Subdivision modeling. Przekierowywanie pętli
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Subdivision modeling. Przekierowywanie pętli
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Spis treści">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Spis treści
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wstęp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modyfikator-subdivision-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modyfikator Subdivision Surface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modyfikator Subdivision Surface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podzia-powierzchni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podział powierzchni
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gowne-opcje-modyfikatora" class="md-nav__link">
+    <span class="md-ellipsis">
+      Główne opcje modyfikatora
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wyostrzanie-krawedzi-holding-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wyostrzanie krawędzi - holding edges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obiekty-pod-wpywem-subdivision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obiekty pod wpływem subdivision
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subdivision-pod-spodem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subdivision pod spodem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subdivision pod spodem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bieguny-edge-poles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bieguny (edge poles)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konwersja-n-gonow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Konwersja N-gonów
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reczna-modyfikacja-topologii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ręczna modyfikacja topologii
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ręczna modyfikacja topologii">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knife" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knife
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dissolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dissolve
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subdivision-zniszczonej-topologii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subdivision zniszczonej topologii
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prymitywy-subdivision-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prymitywy subdivision modeling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prymitywy subdivision modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cylinder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cylinder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quad-sphere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quad Sphere
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cwiczenie-modelowanie-kieliszka" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ćwiczenie - modelowanie kieliszka
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelowanie-aparatu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelowanie aparatu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#przekierowywanie-petli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przekierowywanie pętli
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Przekierowywanie pętli">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zaburzona-gestosc-geometrii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zaburzona gęstość geometrii
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdzie-kieruja-sie-petle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gdzie kierują się pętle?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jak-przekierowac-petle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jak przekierować pętlę?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przekierowanie-petli-w-praktyce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przekierowanie pętli w praktyce
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Spis treści">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Spis treści
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wstęp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modyfikator-subdivision-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modyfikator Subdivision Surface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modyfikator Subdivision Surface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podzia-powierzchni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podział powierzchni
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gowne-opcje-modyfikatora" class="md-nav__link">
+    <span class="md-ellipsis">
+      Główne opcje modyfikatora
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wyostrzanie-krawedzi-holding-edges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wyostrzanie krawędzi - holding edges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obiekty-pod-wpywem-subdivision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Obiekty pod wpływem subdivision
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subdivision-pod-spodem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subdivision pod spodem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Subdivision pod spodem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bieguny-edge-poles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bieguny (edge poles)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konwersja-n-gonow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Konwersja N-gonów
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reczna-modyfikacja-topologii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ręczna modyfikacja topologii
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ręczna modyfikacja topologii">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Merge
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#knife" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knife
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dissolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dissolve
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subdivision-zniszczonej-topologii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subdivision zniszczonej topologii
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prymitywy-subdivision-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prymitywy subdivision modeling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prymitywy subdivision modeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cylinder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cylinder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quad-sphere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quad Sphere
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cwiczenie-modelowanie-kieliszka" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ćwiczenie - modelowanie kieliszka
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelowanie-aparatu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelowanie aparatu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#przekierowywanie-petli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przekierowywanie pętli
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Przekierowywanie pętli">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zaburzona-gestosc-geometrii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Zaburzona gęstość geometrii
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdzie-kieruja-sie-petle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gdzie kierują się pętle?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jak-przekierowac-petle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jak przekierować pętlę?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#przekierowanie-petli-w-praktyce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Przekierowanie pętli w praktyce
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="subdivision-modeling-przekierowywanie-petli">Subdivision modeling. Przekierowywanie pętli.</h1>
+<h2 id="wstep">Wstęp</h2>
+<p>Nasze poprzednie modele opierały się o stylistykę low-poly. Stanowi ona spore ograniczenie dla artysty, w końcu do zamodelowania organicznych form potrzebujemy więcej detalu. Z pomocą przychodzi technika powierzchni podziałowych - subdivision surfaces. Będą to też pierwsze zajęcia w których dogłębnie przejdziemy przez główne zasady topologii.</p>
+<h2 id="modyfikator-subdivision-surface">Modyfikator Subdivision Surface</h2>
+<p>Nasze zajęcia rozpoczniemy od badania modyfikatora Subdivision Surface. Nazywany jest on również często subsurf, sub-d, smooth lub po prostu subdivision.</p>
+<div class="admonition example">
+<p class="admonition-title">Zadanie 1</p>
+<p>Dodaj z menu Add kostkę. Następnie nałóż na nią modyfikator Subdivision Surface. Zobacz jak się on zachowuje gdy dodasz do niego geometrię (np. za pomocą loop cut i extrude).</p>
+<p><video controls>
+    <source src="../../assets/vid/subdivision-modeling/subsurf-modifier/subsurf.webm" type="video/mp4">
+</video></p>
+</div>
+<h3 id="podzia-powierzchni">Podział powierzchni</h3>
+<div class="admonition info">
+<p class="admonition-title">Powierzchnie podziałowe - Pixar w pudełku</p>
+<p><iframe width="100%" style="aspect-ratio: 16 / 9" src="https://www.youtube.com/embed/2tMcSwc9gGg?si=sQiYY5e0qnkbnXzr?start=0&end=147" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+</div>
+<p>Subdivision Surface iteracyjnie dzieli i wygładza powierzchnię naszego obiektu. Pozwala dzięki temu na uzyskanie gładkich, okrągłych form. Dokładniej - za pomocą algorytmu Catmulla-Clarka tworzy nowe wierzchołki na bazie średniej ważonej z pozycji środków ścian i krawędzi.</p>
+<p><img alt="Algorytm Catmulla-Clarka" src="../../assets/img/subdivision-modeling/subsurf-modifier/catmull-clark.gif" /></p>
+<div class="admonition note">
+<p class="admonition-title">Powierzchnia graniczna</p>
+<p>Subdivision można powtarzać w nieskończoność. Proces ten zbiega się do pewnej powierzchni, tzw. <em>powierzchni granicznej</em> (ang. <em>limit surface</em>)</p>
+<p><img alt="Limit surface" src="../../assets/img/subdivision-modeling/subsurf-modifier/limit-surface.gif" /></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Control cage</p>
+<p>Oryginalna siatka daje nam punkty kontrolne, którymi możemy modyfikować gładszy obiekt. Nazywana jest ona <em>siatką kontrolną</em> (ang. <em>control cage</em>)</p>
+</div>
+<h3 id="gowne-opcje-modyfikatora">Główne opcje modyfikatora</h3>
+<p><img alt="Opcje subsurf" src="../../assets/img/subdivision-modeling/subsurf-modifier/modifier.png" /></p>
+<p>Na dzisiejszych zajęciach będziemy korzystać z dwóch opcji:</p>
+<ol>
+<li>On Cage - rzutuje control cage na nasz wynikowy mesh. Wygładza dzięki temu sam widok wireframe.
+<img alt="Normal vs On Cage" src="../../assets/img/subdivision-modeling/wine-glass/9.png" /></li>
+<li>Levels Viewport - zwiększa poziom subdisivion (t.j. ilość iteracji dzielenia) w viewporcie.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Zużycie zasobów</p>
+<p>Każdy kolejny poziom podziału zwiększa ilość ścian około czterokrotnie. Zwiększa to zarówno zużycie RAMu jak i czasu renderowania obiektów. Nie należy zwiększać zbędnie ilości geometrii jeżeli przestajemy wydzieć różnice w kolejnych poziomach subdivision.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Poziomy detalu</p>
+<p>Ten sam obiekt może mieć niższy poziom podziału, jeżeli jest oddalony od kamery bądź słabo widoczny. Obiekty blisko kamery powinny zaś mieć odpowiednio wysoki poziom podziału.</p>
+</div>
+<h2 id="wyostrzanie-krawedzi-holding-edges">Wyostrzanie krawędzi - holding edges</h2>
+<p>Domyślnie subdivision dodaje geometrię kosztem wygładzenia detalu. To co w naszym oryginalnym modelu jest ostre zostaje domyślnie w pełni zaokrąglone w ramach uśredniania.</p>
+<p><img alt="Wygładzanie" src="../../assets/img/subdivision-modeling/holding-edges/0.png" /></p>
+<p>Ponieważ subdivision opiera się na uśrednianiu, możemy jednak skorzystać z tej samej techniki co w przypadku Smooth Shading, czyli dodać <em>holding edges</em> wokół krawędzi którą chcemy wyostrzyć. Dzięki temu wymusimy uśrednienie do ostrej wartości. Jest to jedna z podstawowych technik subdivision modeling.</p>
+<div class="admonition note">
+<p class="admonition-title">Holding edges w subdivision modeling</p>
+<p>Potrzebne są razem trzy krawędzie koło siebie na control cage (originalna krawędź + holding edge po lewej i po prawej), aby wynikowy model posiadał w tym miejscu ostrą krawędź.</p>
+</div>
+<p><img alt="Holding edges" src="../../assets/img/subdivision-modeling/holding-edges/1.png" /></p>
+<p>Interesujące modele posiadają kontrast na poziomie samych form. Istnieją w nich sekcje gładkie, jak i również kanciaste. Mieszając krawędzie wygładzane z tymi wyostrzanymi za pomocą holding edges możemy uzyskać ciekawe rezultaty.</p>
+<p><img alt="Holding edges" src="../../assets/img/subdivision-modeling/holding-edges/3.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Subdivision + Smooth shading = ❤️</p>
+<p>Ponieważ korzystamy z tej samej techniki, która naprawia cieniowanie w ramach Smooth Shading (holding edges), i ponieważ ilość geometrii w ramach subdivision jest ogólnie większa, możemy bez większych problemów łączyć subdivision ze smooth shading. Dzięki temu znacząco ograniczymy ilość poziomów podziałów wymaganych do uzyskania gładkich powierzchni.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Zadanie 2</p>
+<p>Dodaj ostre krawędzie do twojego poprzedniego modelu za pomocą techniki holding edges.</p>
+</div>
+<h2 id="obiekty-pod-wpywem-subdivision">Obiekty pod wpływem subdivision</h2>
+<p>Na razie mieliśmy styczność tylko z podziałem kostki. Sprawdźmy teraz jak subdivision wpływa na inne obiekty.</p>
+<div class="admonition example">
+<p class="admonition-title">Zadanie 3</p>
+<p>Nakładaj po kolei subsurf na pozostałe obiekty z menu Add. W szczególności:</p>
+<ul>
+<li>jak zachowują się one przy zwiększaniu poziomu podziału?</li>
+<li>jak wyglądają pod różnymi kątami?</li>
+<li>jak wyglądają po nałożeniu smooth shading?</li>
+</ul>
+</div>
+<p>Nakładając subdivision na kolejne obiekty obserwujemy dziwne rzeczy. O ile kostka i torus dzielą się dsf
+dobrze, o tyle pozostałe obiekty trójwymiarowe dzielą się w sposób niespodziewany.</p>
+<p>Przykładowo - UV Sphere wygląda na pierwszy rzut oka dobrze, lecz gdy spojrzymy się na nie z innej strony zobaczymy dziwne artefakty.</p>
+<p><img alt="UV Sphere po podziale" src="../../assets/img/subdivision-modeling/artifacts/uv-sphere-pinching.png" /></p>
+<p>Innym przykładem jest Cylinder który po podziale kompletnie nie przypomina cylindra, zamiast niego przypomina balon z pręgami.</p>
+<p><img alt="Cylinder po podziale" src="../../assets/img/subdivision-modeling/artifacts/cylinder/0.png" /></p>
+<div class="admonition question">
+<p class="admonition-title">Artefakty modelowania</p>
+<p>Co jest powodem obserwowanych przez nas artefaktów?</p>
+</div>
+<h2 id="subdivision-pod-spodem">Subdivision pod spodem</h2>
+<p>Subdivision surface pod spodem bazuje na krzywach B-sklejanych (ang. B-spline).</p>
+<p><img alt="Krzywa B-sklejana" src="../../assets/img/subdivision-modeling/b-splines/b-spline.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">B-spline na żywo</p>
+<p>Możesz zobaczyć jak działa B-spline na żywo korzystając z wizualizatora na <a href="https://demonstrations.wolfram.com/BSplineCurveWithKnots/">stronie Wolfram Alpha</a>.</p>
+</div>
+<p>To jest - wszystkie punkty naszego obiektu reinterpretuje jako punkty kontrolne krzywych B-sklejanych, a następnie dokonuje między nimi interpolacji do uzyskania gładkich powierzchni. Możemy zobaczyć wynikowe B-splajny bezpośrednio za pomocą opcji On Cage modyfikatora.</p>
+<p><img alt="B-splajny w subdivision" src="../../assets/img/subdivision-modeling/b-splines/b-spline-flow.png" /></p>
+<p>Istnieje jednak pewne założenie w ramach algorytmu Catmulla-Clarka: aby zachować wszystkie właściwości matematycznej ciągłości B-splajny muszą się domykać. Dzieje się tak dla wierzchołków, z których wychodzą dokładnie cztery krawędzie. Co się dzieje w innych przypadkach?</p>
+<h3 id="bieguny-edge-poles">Bieguny (edge poles)</h3>
+<p>Wierzchołki do których zbiega się inna liczba krawędzi niż cztery to tzw. bieguny (ang. <em>edge poles</em>) bądź punkty nadzwyczajne (ang. <em>extraordinary points</em>). Przerywają one pętle.</p>
+<p><img alt="Przerwanie pętli" src="../../assets/img/subdivision-modeling/b-splines/spline-termination.png" /></p>
+<p>W tych punktach tracimy matematyczne właściwości ciągłości. Powoduje to różnego rodzaju artefakty widoczne zwłaszcza, gdy te punkty są umieszczone na wykrzywionych obszarach.</p>
+<p>Można to zauważyć na przykład poddając kostkę operacji subdivision. Obserwując ją przez odpowiedni matcap możemy zauważyć, że tam gdzie zbiegają się trzy krawędzie ze sobą (to jest - tworzą biegun trzeciego stopnia) zachodzi załamanie światła (jest ono przyciągane do tego 3-pole).</p>
+<p><img alt="Przykłąd artefaktu" src="../../assets/img/subdivision-modeling/poles/cube-poles.png" /></p>
+<p>Im wyższy jest stopień bieguna tym artefakty stają się coraz bardziej widoczne. Patrząc się na model UV sphere widzimy natychmiast o co chodzi - domyślnie UV sphere tworzy się z 32 segmentami. Są one więc złączone po środku biegunem 32 stopnia!</p>
+<h3 id="konwersja-n-gonow">Konwersja N-gonów</h3>
+<div class="admonition question">
+<p class="admonition-title">Brak dużych biegunów na cylindrze</p>
+<p>Przykład z cylindrem nie posiadał żadnego widocznego dużego bieguna. Dlaczego jego geometria została jednak tak bardzo zniszczona po nałożeniu subdivide?</p>
+</div>
+<p>Dzieje się tak dlatego, że cylinder posiada dwa duże n-gony (jego podstawy). Subdivision dzieląc ścianę dzieli każdą jej krawędź na pół a następnie łączy wynikowe wierzchołki po środku tej ściany.</p>
+<p>Możemy zobaczyć dokładnie o co chodzi poprzez nałożenie Subdivision Surface w trybie Simple (czyli podział obiektu bez wygładzania/zaokrąglania krawędzi):</p>
+<p><img alt="Podział n-gonów" src="../../assets/img/subdivision-modeling/n-gons/0simple-subsurf.png" /></p>
+<p>Zauważ, że:</p>
+<ul>
+<li>w wyniku tego podziału każdy n-gon staje się zamieniony na quad</li>
+<li>po środku ściany tworzy się biegun o stopniu równym ilości jej krawędzi</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Subdivision Surface konwertuje wszystko na quady</p>
+<p>Algorytm Catmulla-Clarka jest w stanie skonwertować każdy model na quady. Robi to kosztem wprowadzania nowych biegunów.</p>
+</div>
+<p>Wracając do naszego poprzedniego przykładu - domyślnie cylinder tworzony jest z 32-krawędziowymi podstawami. Po pierwszej iteracji subdivision konwertowane one są na dwa bieguny 32 stopnia.</p>
+<p><img alt="Podstawy cylindra po podziale" src="../../assets/img/subdivision-modeling/n-gons/cylinder-base-subdiv.png" /></p>
+<p>Tym razem wynikowe quady są dodatkowo mocno rozciągnięte i ściśnięte, w końcu subdivision musiało zrobić połączenie od środka podstawy do cienkich krawędzi bocznych. Powoduje to dodatkowe artefakty w przypadku kolejnych poziomów podziału - im bliżej krawędzie są koło siebie, tym stają się ostrzejrze w dalszych iteracjach.</p>
+<p><img alt="Cylinder po podziale" src="../../assets/img/subdivision-modeling/n-gons/cylinder-subdiv.png" /></p>
+<h2 id="reczna-modyfikacja-topologii">Ręczna modyfikacja topologii</h2>
+<p>Do kolejnych zadań potrzebujemy nowych narzędzi pozwalających na ręczne dodawanie wierzchołków i krawędzi w dowolnych miejscach.</p>
+<h3 id="merge">Merge</h3>
+<ul>
+<li>Skrót: <code>M</code></li>
+</ul>
+<p>Merge łączy ze sobą dwa wybrane wierzchołki tworząc w ich miejscu biegun.</p>
+<p><img alt="Merge" src="../../assets/img/subdivision-modeling/tools/merge.png" /></p>
+<h3 id="knife">Knife</h3>
+<ul>
+<li>Skrót: <code>K</code></li>
+</ul>
+<p>Knife pozwala na wycinanie nowej topologii w meshu.</p>
+<video controls>
+    <source src="../../assets/vid/subdivision-modeling/tools/knife.webm" type="video/mp4">
+</video>
+
+<h3 id="dissolve">Dissolve</h3>
+<ul>
+<li>Skrót: <code>X</code></li>
+</ul>
+<p><img alt="Dissolve" src="../../assets/img/subdivision-modeling/tools/dissolve.png" /></p>
+<p>Dissolve pozwala na usunięcie niepotrzebnej topologii pozostawiając przy tym resztę.</p>
+<h2 id="subdivision-zniszczonej-topologii">Subdivision zniszczonej topologii</h2>
+<p>Możemy ręcznie popsuć topologię dobrego modelu aby zobaczyć na żywo jak bieguny i n-gony wpływają na podział powierzchni.</p>
+<div class="admonition example">
+<p class="admonition-title">Zadanie 4</p>
+<p>Utwórz poniższy mesh. Nałóż na niego subdivision i włącz matcap pozwalający na dobry podgląd odbić i cieniowania.</p>
+<p><img alt="Mesh testowy" src="../../assets/img/subdivision-modeling/artifacts/bad-topology/1.png" /></p>
+<p>Zniszcz jego topologię za pomocą poznanych wcześniej narzędzi. Zobacz jak dodawanie nowych biegunów i n-gonów wpływa na cieniowanie i na geometrię modelu.</p>
+<p><img alt="Artefakty" src="../../assets/img/subdivision-modeling/artifacts/bad-topology/3.png" /></p>
+</div>
+<p>Powyższy przykład ilustruje poważny problem z artefaktami w subdivision modeling - dotyczą one nie tylko cieniowania, ale również samej geometrii. Widzimy to przesuwając wynikowy mesh tak, aby zobaczyć jego zakrzywienie.</p>
+<p><img alt="Zakrzywienie" src="../../assets/img/subdivision-modeling/artifacts/bad-topology/4.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Artefakty subdivision surface</p>
+<p>Artefakty subdivision surface dotyczą nie tylko cieniowania - powodują również wykrzywienie samej geometrii.</p>
+</div>
+<h2 id="prymitywy-subdivision-modeling">Prymitywy subdivision modeling</h2>
+<p>Łatwo zauważyć, że prymitywy oferowane przez menu Add nie są dostosowane pod subdivision modeling. Skoro wiemy skąd biorą się artefakty to jak możemy wykonać nowe prymitywy, które nie będą ich posiadać?</p>
+<h3 id="cylinder">Cylinder</h3>
+<p>Zacznijmy nasze rozważania od cylindra, bo jest go najłatwiej naprawić.</p>
+<p><img alt="Cylinder po podziale" src="../../assets/img/subdivision-modeling/artifacts/cylinder/0.png" /></p>
+<p>Ponieważ mesh będzie później dzielony nie potrzebujemy aż tylu krawędzi. Stwórzmy nowy cylinder z podstawami o 16 bokach. Wiemy już, że poprzedni artefakt został spowodowany obecnością n-gona. Usuńmy go więc tak jak robiliśmy poprzednio za pomocą narzędzia grid fill.</p>
+<p><img alt="Naprawa cylindra 1" src="../../assets/img/subdivision-modeling/artifacts/cylinder/1.png" /></p>
+<p>Możemy zauważyć natychmiastową poprawę podziału. Nadal nie jest on jednak idealny - podział się zakrzywia koło biegunów (bieguny i zła krzywizna zaznaczone na czerwono).</p>
+<p>O ile nie jesteśmy w stanie się ich pozbyć to możemy je przenieść do środka za pomocą narzędzia inset. Doda to nam od razu pętle w których możemy umieścić holding edges za pomocą narzędzia loop cut.</p>
+<p><img alt="Naprawa cylindra 2" src="../../assets/img/subdivision-modeling/artifacts/cylinder/2.png" /></p>
+<p>Nasz model nie posiada już żadnych widocznych artefaktów. Możemy więc zakończyć pracę.</p>
+<p><img alt="Gotowy cylinder" src="../../assets/img/subdivision-modeling/artifacts/cylinder/3.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Inset a grid fill</p>
+<p>Zauważ, że inset ścisnął zewnętrzne ściany grid fill (spójrz jak wyglądały ściany zawierające czerwone wierzchołki przed i po inset). By tego uniknąć najlepiej jest najpierw wykonać inset a dopiero potem zamienić n-gon na quady za pomocą grid fill. W tym poradniku zrobiliśmy na odwród, aby pokazać jak można metodycznie naprawić geometrię.</p>
+</div>
+<h3 id="quad-sphere">Quad Sphere</h3>
+<p>Nie jesteśmy w stanie naprawić w łatwy sposób UV Sphere. Szybciej jest wykonać od nowa nowy prymityw - tzw. Quad Sphere. Zauważ, że kostka z wieloma poziomami podziału staje się coraz bardziej okrągła. Gdybyśmy tylko wyrównali wynikową geometrię uzyskalibyśmy idealną sferę.</p>
+<p>Dodaj na scenę kostkę i nałóż na nią subdivision. Na poniższym przykładzie wykonane zostały 3 podziały. Nie będziemy dzielić teraz tej kostki bardziej, bo będą wykonywane później kolejne podziały.</p>
+<p><img alt="Modelowanie Quad Sphere 1" src="../../assets/img/subdivision-modeling/artifacts/quad-sphere/1.png" /></p>
+<p>Zatwierdź subdivision najeżdżając myszką na modyfikator i klikając <code>Ctrl</code> + <code>A</code>, bądź wybierając <code>Apply</code> z menu ukrytego pod strzałką.</p>
+<p><img alt="Modelowanie Quad Sphere 1" src="../../assets/img/subdivision-modeling/artifacts/quad-sphere/2.png" /></p>
+<p>Mesh który uzyskaliśmy jest okrągły, lecz nie podąża za dokładnym kształtem sfery. Po zaznaczeniu całego obiektu w edit mode możemy go zamienić na sferę za pomocą operacji To Sphere (skrót <code>Shift</code> + <code>Alt</code> + <code>S</code> bądź wewnątrz menu Mesh - Transform). Uzyskamy wtedy topologię, na którą będziemy mogli nałożyć subdivision bez większych artefaktów.</p>
+<video controls>
+    <source src="../../assets/vid/subdivision-modeling/quad-sphere.webm" type="video/mp4">
+</video>
+
+<h2 id="cwiczenie-modelowanie-kieliszka">Ćwiczenie - modelowanie kieliszka</h2>
+<div class="admonition example">
+<p class="admonition-title">Zadanie 5</p>
+<p>Zamodeluj kieliszek na podstawie podanej referencji. Zwróć uwagę na to gdzie będą potrzebne holding edges. Na kieliszku nie mogą być widoczne artefakty cieniowania.</p>
+</div>
+<p><img alt="Kieliszek" src="../../assets/ref/subdivision-modeling/wine-glass.jpg" /></p>
+<details class="tip">
+<summary>Podpowiedź 1 - wybór prymitywu</summary>
+<p>Rozpocznij modelowanie kieliszka od dodania cylindra.</p>
+</details>
+<details class="tip">
+<summary>Podpowiedź 2 - Modelowanie krok po kroku</summary>
+<p>Dodaj na scenę nowy cylinder o ośmiu bokach.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/0.png" /></p>
+<p>Napraw jego topologię. Pamiętaj o zrobieniu tego na obu podstawach!</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/1.png" /></p>
+<p>Wyrównaj gęstość geometrii na ścianach bocznych. Następnie wytłocz rączkę i podstawkę kieliszka.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/2.png" /></p>
+<p>Wytłocz wnętrze kieliszka. Pamiętaj o wyrównaniu w nim gęstości geometrii.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/3.png" /></p>
+<p>Włącz smooth shading jeżeli jeszcze nie zostało to zrobione.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/4.png" /></p>
+<p>Na referencji rączka jest zakrzywiona. Potrzebne są na niej pętle, które później będzie można wygiąć.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/5.png" /></p>
+<p>Na referencji połączenie między kieliszkiem a rączką jest zakrzywione. Zamodeluj to za pomocą bevel.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/6.png" /></p>
+<p>Dodaj zakrzywienie rączki za pomocą proportional editing.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/7.png" /></p>
+<p>Dodaj zakrzywienie góry kieliszka za pomocą proportional editing. W tym momencie skończyliśmy modelować główne formy - możesz więc już dodać holding edges.</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/8.png" /></p>
+<p>Nasz kubek jest już gotowy</p>
+<p><img alt="Modelowanie kieliszka" src="../../assets/img/subdivision-modeling/wine-glass/9.png" /></p>
+</details>
+<h2 id="modelowanie-aparatu">Modelowanie aparatu</h2>
+<p>Modelowanie poprzedniego obiektu poszło gładko. Spróbujmy w ramach ćwiczeń zamodelować inny obiekt złożony również z prostych prymitywów.</p>
+<div class="admonition danger">
+<p class="admonition-title">Zadanie 6</p>
+<p>Zamodeluj aparat na podstawie podanej referencji. Aparat musi być z nią zgodny (t.j. musi posiadać okrągły obiektyw z kwadratowym otworem oraz ostre krawędzie). Model nie może posiadać artefaktów cieniowania.</p>
+<p><strong>Nie będziesz w stanie wykonać poprawnie tego zadania. Wobec tego nie skupiaj się na detalach tylko modeluj główne formy, najlepiej rozpoczynając od obiektywu.</strong></p>
+</div>
+<p><img alt="Aparat" src="../../assets/ref/subdivision-modeling/camera/camera.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Podział na obiekty</p>
+<p>Nie posiadamy jeszcze narzędzi do zamodelowania aparatu jako jeden obiekt. Obiektyw jest częścią, którą można odłączyć od aparatu. Wobec tego najlepiej jest zamodelować aparat jako dwa osobne obiekty (ciało i obiektyw).</p>
+</div>
+<details class="danger">
+<summary>Próba modelowania</summary>
+<p>Modelowanie rozpoczniemy od obiektywu. Składa się on z wielu warstw cylindrów (trochę jak tort).</p>
+<p>Dodaj na scenę cylinder. Stanowił on będzie najniższą warstwę obiektywu, z której będziemy wytłaczać resztę. Niech cylinder posiada 16 krawędzi aby po przyszłym grid fill mieć miejsce na wytłoczenie kwadratowej dziury. Nie naprawiaj jeszcze topologii - ułatwi nam to późniejsze wytłaczanie warstw.</p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/0.png" /></p>
+<p>Wytłaczaj po kolei kolejne warstwy obiektywu za pomocą inset i extrude.</p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/1.png" /></p>
+<p>Napraw topologię. Pamiętaj o uwzględnieniu obu podstaw.</p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/2.png" /></p>
+<p>Przejdźmy do wytłaczania dziury w obiektywie. Możemy spłaszczyć krawędzie wygenerowane przez grid fill za pomocą narzędzia skalowania (<code>S</code> + wybrana oś + <code>0</code>). Jeżeli zrobimy to od razu wpłyniemy jednak na krzywiznę pętli poligonów dookoła grid fill (porównaj jak wygląda obiekt po przeskalowaniu krawędzi - czerwone linie wskazują poprzednią, oryginalną krzywiznę). <strong>Nie rób tego w ten sposób</strong></p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/3.png" /></p>
+<p>Wobec tego przed spłaszczeniem krawędzi dodamy dodatkową pętlę (zaznaczona na niebiesko) która będzie chroniła krzywiznę przed zmianą. Po przygotowaniu kwadratowej dziury wytłocz ją wgłąb modelu.</p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/4.png" /></p>
+<p>Nałóż na model subdivision surface i włącz smooth shading.</p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/5.png" /></p>
+<p>Subdivision wygładziło wszystkie krawędzie. Wobec tego dodajmy holding edges dla poszczególnych warstw obiektywu.</p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/6.png" /></p>
+<p>Dodaj holding edges dla kwadratowego otworu. </p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/7.png" /></p>
+<p><strong>...coś jest nie tak - zakrzywienie całego naszego modelu się popsuło!</strong></p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/8.png" /></p>
+<p>Na widoku z góry model wygląda jeszcze gorzej. Na czerwono zaznaczona została oczekiwana krzywizna.</p>
+<p><img alt="Modelowanie obiektywu" src="../../assets/img/subdivision-modeling/camera/9.png" /></p>
+</details>
+<h2 id="przekierowywanie-petli">Przekierowywanie pętli</h2>
+<h3 id="zaburzona-gestosc-geometrii">Zaburzona gęstość geometrii</h3>
+<div class="admonition question">
+<p class="admonition-title">Dlaczego nie mogę wykonać poprzedniego zadania?</p>
+<p>Referencja składała się z samych prostych prymitywów. W przeciwieństwie do kieliszka nie byliśmy jednak w stanie zamodelować obiektywu. Dlaczego?</p>
+</div>
+<p>Subdivision zaokrągliło nasz kwadratowy otwór. W trakcie modelowania należało więc dodać wokół niego holding edges. Te zaś wyszły do całej reszty modelu i wyostrzyły krawędzie, które miały być zaokrąglone, co skutkowało zaobserwowanymi wcześniej artefaktami. To jest - zaburzyliśmy równomierną gęstość geometrii na zaokrąglonych powierzchniach.</p>
+<div class="admonition question">
+<p class="admonition-title">Co mam w tej sytuacji zrobić?</p>
+<p>Jak mogę użyć holding edges, aby nie wyszły one w złe miejsca?</p>
+</div>
+<h3 id="gdzie-kieruja-sie-petle">Gdzie kierują się pętle?</h3>
+<p>Gdy przecinamy krawędź za pomocą loop cut pętla trafia do krawędzi przed nią. Ale gdzie dokładnie jest kierunek w przód?</p>
+<p><img alt="Loop cut" src="../../assets/img/subdivision-modeling/loop-redirection/loop-cut.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Podejrzana ściana</p>
+<p>Na zdjęciu widnieje ściana o kształcie trójkąta, przez które loop cut nie przechodzi. Zauważ jednak, że ta ściana nadal jest quadem - ma cztery wierzchołki.</p>
+</div>
+<p>Intuicja podpowiada, że pętla powinna przejść do krawędzi prosto przed nią (zaznaczona na niebiesko). Nie jest to jednak rozwiąniem stabilnym - samo przesuwanie wierzchołków po meshu mogłoby wtedy zmienić edge flow. Wobec tego pętla przechodzi do krawędzi, która z nią nie sąsiaduje (zaznaczona na żółto przez loop cut).</p>
+<p>Jeżeli pracujemy na quadach, to każda wybrana krawędź ma tylko jedną, która z nią nie sąsiaduje. Na innych poligonach nie da się jednak w ten sposób zdefiniować przodu - w trójkącie wszystkie krawędzie ze sobą sąsiadują, a w wielokątach powyżej czterech krawędzi każda krawędź ma wiele kandydatów na przód, więc nie wiadomo który wybrać. <strong>Jest to powodem dla którego n-gony przerywają pętle</strong>. W analogiczny sposób działa przerywanie pętli przez bieguny.</p>
+<div class="admonition note">
+<p class="admonition-title">Przerywanie pętli przez n-gony i bieguny</p>
+<p>N-gony i edge poles przerywają pętle ścian i krawędzi, ponieważ dla danej krawędzi nie wiadomo która jest przed nią.</p>
+</div>
+<h3 id="jak-przekierowac-petle">Jak przekierować pętlę?</h3>
+<p>Spróbujmy przekierować na poniższym przykładzie pętlę tak, aby przebiegała według pożądanego kierunku zaznaczonego na niebiesko.</p>
+<p><img alt="Przekierowanie pętli" src="../../assets/img/subdivision-modeling/loop-redirection/0.png" /></p>
+<p>Musimy gdzieś dodać nową przednią ścianę. Dodamy ją tam, gdzie pętla ma skręcać za pomocą knife tool.</p>
+<p><img alt="Przekierowanie pętli" src="../../assets/img/subdivision-modeling/loop-redirection/1.png" /></p>
+<p>Zauważ, że utworzyliśmy w ten sposób trójkąty które przerywają pętlę ścian. Musimy naprawić topologię - zrobimy to poprzez usunięcie sąsiednich krawędzi.</p>
+<p><img alt="Przekierowanie pętli" src="../../assets/img/subdivision-modeling/loop-redirection/2.png" /></p>
+<p>Przekierowaliśmy pętlę. Zauważ, że powstały przy tym nowe bieguny (czerwony i niebieski)</p>
+<p><img alt="Przekierowanie pętli" src="../../assets/img/subdivision-modeling/loop-redirection/3.png" /></p>
+<p>Z powyższego przykładu wynika kilka ciekawych faktów:</p>
+<div class="admonition note">
+<p class="admonition-title">Przekierowanie pętli redukuje gęstość geometrii</p>
+<p>Przekierowanie przez nas pętli wymagało usunięcia części istniejącej geometrii. Przekierowując pętle możemy redukować więc gęstość geometrii.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Bieguny sterują przebiegiem pętli</p>
+<p>Nie można przekierować pętli bez utworzenia nowych biegunów. Bieguny są kluczowe do sterowania ich przebiegiem.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Bieguny chodzą parami</p>
+<p>Każdy biegun piątego stopnia posiada swoją parę - biegun trzeciego stopnia.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Zadanie 7</p>
+<p>Otwórz płaszczyznę. Przetnij ją pięć razy pionowo i poziomo. Następnie przekieruj pętle tak, aby uzyskać edge flow jak na referencjach:</p>
+<p><img alt="Przekierowanie pętli - zadanie" src="../../assets/ref/subdivision-modeling/loop-redirection/0.png" /></p>
+<p><img alt="Przekierowanie pętli - zadanie" src="../../assets/ref/subdivision-modeling/loop-redirection/1.png" /></p>
+<p><img alt="Przekierowanie pętli - zadanie" src="../../assets/ref/subdivision-modeling/loop-redirection/2.png" /></p>
+</div>
+<h3 id="przekierowanie-petli-w-praktyce">Przekierowanie pętli w praktyce</h3>
+<p>Spróbujmy zamodelować kwadratowe wcięcie na sferze.</p>
+<p><img alt="Sfera z wycięciem" src="../../assets/ref/subdivision-modeling/density-reduction/square-hole.png" /></p>
+<p>Dodajmy na scenę nową Quad Sphere. Wytnijmy w niej kwadratowy otwór i wyrównajmy w nim gęstość geometrii</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/0.png" /></p>
+<p>Dodajmy holding edges. Tak jak poprzednio na naszym modelu pojawiły się artefakty związane z niewyrównaną gęstością geometrii.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/1.png" /></p>
+<p>Wiemy już jednak, że przekierowanie pętli pozwala nam zredukować nadmierną gęstość geometrii. Spróbujmy więc przekierować któryś holding edge.</p>
+<p>W ramach pierwszej próby spróbujmy przekierować czerwoną pętlę poniżej, według niebieskiej strzałki. Łącząc obie te pętle powinniśmy finalnie móc zredukować geometrię.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/2.png" /></p>
+<p>Możemy to uzyskać np. wykonując merge wierzchołków.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/3.png" /></p>
+<p>Merge stworzył nowy biegun, który przerwał pętlę tworzącą nasz holding edge. Możemy teraz usunąć jej pozostałą część.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/4.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Usuwanie pozostałości pętli za pomocą dissolve</p>
+<p>Przerywanie pętli z obu stron za pomocą merge pozwala nam na szybkie usunięcie jej niechcianej części za pomocą narzedzia dissolve.</p>
+</div>
+<p>Jest problem - utworzyliśmy dwa trójkąty jako efekt uboczny. Możemy próbować je jakoś zamienić na quady dodając między nimi jakąś pętlę, lecz zmienimy w ten sposób krzywiznę kuli. Spróbujmy więc przekierować inną pętlę.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/5.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Złe przekierowanie</p>
+<p>W trakcie modelowania mimo planowania możemy i tak źle przekierować pętle. Nie należy się poddawać - trzeba spróbować gdzie indziej. Kluczowe jest w tym celu częste zapisywanie projektu i posiadanie ustawionej wysokiej ilości dostępnych cofnięć.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Nie zmuszaj złego rozwiązania do działania</p>
+<p>Lepiej zacząć od nowa niż robić coś źle już na starcie. Zmuszając złe rozwiązania do działania zostawiamy sobie tylko więcej problemów na przyszłość. Oczywiście nie zawsze wiemy, że coś co robimy jest złe. Da się z takich sytuacji wyjść, ale jeżeli wiemy że istnieje lepsze rozwiązanie warto przejść do niego od razu.</p>
+</div>
+<p>Jeżeli nie udało się przekierować pętli na dole to spróbujmy przekierować tą na górze (zaznaczona na czerwono). Ponownie - gdy wykonamy merge pojawi się trójkąt.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/6.png" /></p>
+<p>Zauważ jednak, że po lewej od tego trójkąta jest kolejna pętla do przekierowania. Jeżeli przekierujemy ją w kierunku tego trójkąta to on zniknie!</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/7.png" /></p>
+<p>Jeżeli powtórzymy te operacje dla każdego wierzchołka to utworzymy nie tylko nowe pętle od przekierowanych holding edges - pojawi się również pętla wokół samego otworu.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/8.png" /></p>
+<p>Pozostałe holding edges przekierujemy w analogiczny sposób.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/9.png" /></p>
+<p>Gdy przekierowujemy holding edges należy się upewnić że przekierowujemy faktycznie holding edge a nie oryginalną pętlę geometrii danego obiektu. W przeciwnym wypadku zmienimy jego krzywiznę.</p>
+<p>Na obrazku po lewej kolorem żółtym zostały zaznaczone oryginalne pętle Quad Sphere. Wiemy że są poprawne, bo podtrzymują one wierzchołek kwadratowego wcięcia i nie przechodzą dalej tak jak pętle utrzymujęce.</p>
+<p>Pętle na zewnątrz od nich to holding edges. Żeby nie mieszało nam się dalej zostaną one od razu zmergowane z oryginalnymi pętlami quad sphere. Przerwie to ich dalszy przepływ.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/10.png" /></p>
+<p>Jeżeli spojrzymy się z bliska na utworzoną siatkę zobaczymy, że czerwone krawędzie służą tylko do podtrzymania wierzchołków zaznaczonych na czerwono. Jeżeli je złączymy do niebieskiego wierzchołka to będziemy mogli pozbyć się tych krawędzi.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/11.png" /></p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/12.png" /></p>
+<p>Po powtórzeniu tej operacji dla każdego wierzchołka pozostanie nam tylko pozbyć się pozostałości po przekierowanych holding edges.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/13.png" /></p>
+<p>Nasz mesh jest gotowy. Zauważ, że przekierowanie odbyło się kosztem wprowadzenia nowych biegunów.</p>
+<p><img alt="Przykład przekierowania" src="../../assets/img/subdivision-modeling/density-reduction/14.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">Praca domowa</p>
+<p>Na podstawie zdobytej w tym dziale wiedzy dokończ model aparatu.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Stopka" >
+        
+          
+          <a href="../organic-modeling/" class="md-footer__link md-footer__link--prev" aria-label="Poprzednia strona: Modelowanie organiczne. Deformacje">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Poprzednia strona
+              </span>
+              <div class="md-ellipsis">
+                Modelowanie organiczne. Deformacje
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 Szymon Zadworny, Koło Naukowe Vertex PG
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/sajmon170" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Skopiowano do schowka", "clipboard.copy": "Kopiuj do schowka", "search.result.more.one": "1 wi\u0119cej na tej stronie", "search.result.more.other": "# wi\u0119cej na tej stronie", "search.result.none": "Brak wynik\u00f3w wyszukiwania", "search.result.one": "Wyniki wyszukiwania: 1", "search.result.other": "Wyniki wyszukiwania: #", "search.result.placeholder": "Zacznij pisa\u0107, aby szuka\u0107", "search.result.term.missing": "Brak", "select.version": "Wybierz wersj\u0119"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
