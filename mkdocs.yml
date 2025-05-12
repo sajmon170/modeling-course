@@ -14,6 +14,7 @@ nav:
     - Wstęp - blockout: course/blockout.md
     - Box modeling - podstawy: course/box-modeling.md 
     - Modelowanie organiczne. Deformacje: course/organic-modeling.md 
+    - Subdivision modeling. Przekierowywanie pętli: course/subdivision-modeling.md 
 
 theme:
   logo: assets/logo_white_bold.png
