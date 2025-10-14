@@ -1,6 +1,6 @@
 # Pierwsze zajęcia - blockout
 
-Witaj na nowym kursie modelowania 3D w Blenderze. Mam nadzieję, że będzie stanowić on dobrą pomoc w trakcie twojej przygody tworzeniem twoich pierwszych modeli. Powodzenia!
+Witaj na nowym kursie modelowania 3D w Blenderze. Mam nadzieję, że będzie stanowić on dobrą pomoc w trakcie twojej przygody tworzenia swoich pierwszych modeli. Powodzenia!
 
 ![Ekran startowy Blendera](../assets/img/blockout/Splash.png)
 
@@ -23,8 +23,8 @@ Polska wersja językowa nie tylko nie jest dokończona, w niektórych miejscach 
 Interfejs Blendera opiera się o obszary, które możemy łączyć i dzielić. Domyślne to:
 
 - 3D Viewport - nasz widok na scenę 3D
-- Outlinera - pokazuje listę wszystkich obiektów na scenie
-- Timeline - oś czasu wykorzystywana przy animacji. Na obecnych zajęciach można go pominąć
+- Outliner - pokazuje listę wszystkich obiektów na scenie
+- Timeline - oś czasu wykorzystywana przy animacji. Na obecnych zajęciach można ją pominąć
 - Properties - właściwości zaznaczonego obiektu. Również można je teraz pominąć.
 
 Warto nadmienić, że w nowszych wersjach Bledera dodano **Status Bar** (pasek na samym dole) pokazujący w co można w danej chwili kliknąć na myszce/klawiaturze. **Warto się na niego spojrzeć** jeżeli nie masz pewności jak postąpić dalej!
@@ -39,7 +39,7 @@ Najeżdżając myszką na krawędź i wciskając lewy przycisk myszy jesteśmy w
 
 !!! example "Zadanie 1"
 	Złącz wszystkie obszary tak, by pozostał tylko 3D Viewport. Następnie otwórz domyślne kafelki ponownie.
-	
+
 ## 3D Viewport i Outliner
 Nawigacja po widoku 3D wymaga znajomości kilku niezbędnych skrótów klawiszowych:
 
@@ -72,12 +72,12 @@ Nawigacja po widoku 3D wymaga znajomości kilku niezbędnych skrótów klawiszow
 Kolekcje to zbiory obiektów. W outlinerze domyślnie są już dwie kolekcje - `Scene Collection` i `Collection`. Możesz utworzyć nowe kolekcje klikając prawym przyciskiem myszy na outliner i wybierając opcję `New Collection`. Kolekcje można zagnieżdżać - tworzą one wtedy hierarchię reprezentowaną jako zwijalne drzewo w outlinerze. Warto segregować obiekty dodawane w Object Mode w kolekcje, aby uprościć ich wykorzystanie później.
 
 !!! example "Zadanie 2"
-	Ułóż losowe obiekty na scenie tak, aby utworzyć jakąś ciekawą, abstrakcyjną kompozycję. Nie musi to wyglądać realistycznie (przykłady zamieszczone pod spodem - nie musisz za nimi dokładnie podążać). Jeżeli zauważysz, że niektóre dodawane przez ciebie obiekty tworzą wspólną i logiczną całość, to dodaj je do kolekcji.
+	Ułóż losowe obiekty na scenie tak, aby utworzyć jakąś ciekawą, abstrakcyjną kompozycję. Nie musi ona wyglądać realistycznie (przykłady zamieszczone pod spodem - nie musisz za nimi dokładnie podążać). Jeżeli zauważysz, że niektóre dodawane przez ciebie obiekty tworzą wspólną i logiczną całość, to utwórz dla nich nową kolekcję.
 
 ![Abstrakcyjne formy](../assets/ref/blockout/abstract/merged.png)
 
 ### Auto-depth
-W trakcie wykonywania poprzedniego zadania można było zauważyć, że przybliżanie kamery do obiektów w pewnym momencie spowalnia. Jeżeli będziemy próbować dalej przybliżać mimo tego dojdzie do sytuacji, w której ruch kamery się zatrzyma a my będziemy musieli tyle samo cofać, żeby przywrócić kamerę do poprzedniej pozycji (bądź wcisnąć klawisz `.`). Powoduje to wrażenie zawieszenia się programu, podczas kiedy jest to wbudowane zachowanie które można wyłączyć.
+W trakcie wykonywania poprzedniego zadania można było zauważyć, że przybliżanie kamery do obiektów w pewnym momencie spowalnia. Jeżeli będziemy próbować dalej przybliżać mimo tego to dojdzie do sytuacji, w której ruch kamery się zatrzyma, a my będziemy musieli tyle samo cofać, żeby przywrócić kamerę do poprzedniej pozycji (bądź wcisnąć klawisz `.`). Powoduje to wrażenie zawieszenia się programu, podczas kiedy jest to wbudowane zachowanie które można wyłączyć.
 
 Aby je wyłączyć należy wejść w `Edit` - `Preferences` - `Navigation` i zaznaczyć `Auto Depth`.
 
@@ -95,26 +95,26 @@ Aby je wyłączyć należy wejść w `Edit` - `Preferences` - `Navigation` i zaz
 ![Kształt a forma](../assets/img/blockout/shapes_and_forms.png)
 
 ## Co to jest blockout?
-Blockout to luźne ułożenie obiektów na scenie tak, by przypominały to co chcemy zbudować. Nie obchodzi nas w tym realistyczny wygląd ani poprawna siatka modelu tylko chcemy mieć pogląd na ogólne proporcje. Korzystając z tej techniki nie będziemy musieli wychodzić z Object Mode w trakcie tworzenia naszych modeli.
+Blockout to luźne ułożenie obiektów na scenie tak, by przypominały to co chcemy zbudować. Nie obchodzi nas w tym realistyczny wygląd ani poprawna siatka modelu. Celem jest mieć pogląd na ogólne proporcje. Korzystając z tej techniki nie będziemy musieli wychodzić z Object Mode w trakcie tworzenia naszych modeli!
 
 ## Praca z referencjami - model budy dla psa
 Naszym pierwszym modelem będzie prosta buda dla psa.
 
 ![Abstrakcyjne formy](../assets/ref/blockout/dog-house/dog-refs.png)
 
-Zacznijmy od analizy naszych referencji. Przede wszystkim - zależy nam na rozbicie skomplikowanego obiektu na jak najprostsze formy:
+Zacznijmy od analizy naszych referencji. Przede wszystkim - zależy nam na rozbiciu skomplikowanego obiektu na jak najprostsze formy:
 
 ![Abstrakcyjne formy](../assets/ref/blockout/dog-house/analysis.png)
 
 ![Abstrakcyjne formy](../assets/ref/blockout/dog-house/decomposition.png)
 
-Nasz domek rozbijemy na prostopadłościan, dach i dodatkowe detale. Modelowanie detali wygląda tak samo jak modelowanie reszty - ponownie rozbijamy je na największe formy i detale. Proces powtarzamy tak długo, aż dojdziemy do wymaganego poziomu szczegółów.
+Nasz domek rozbijemy na prostopadłościan, dach i dodatkowe detale. Modelowanie detali wygląda tak samo jak modelowanie reszty - ponownie rozbijamy je na największe formy i detale. Proces powtarzamy tak długo, aż dojdziemy do odpowiedniego poziomu szczegółów.
 
 !!! example "Zadanie 3"
 	Zamodeluj/zrób blockout budy dla psa na podstawie podanych wyżej referencji
 	
 !!! note "Korzystanie z referencji"
-	Nie musisz dokładnie trzymać się pojedynczej referencji. Wybieraj z różnych referencji takie detale, jakie ci się podobają tak, aby utworzyć jak najlepszy z twojego punktu widzenia model.
+	Nie musisz dokładnie trzymać się pojedynczej referencji. Wybieraj z różnych referencji takie detale jakie ci się podobają, tak aby utworzyć jak najlepszy z twojego punktu widzenia model.
 
 ??? tip "Podpowiedź"
 	1. Rozpocznij od zamodelowania ogólnego kształtu ścian. Zwróć uwagę na różną długość, szerokość i wysokość modelowanej budy
@@ -131,7 +131,7 @@ Nasz domek rozbijemy na prostopadłościan, dach i dodatkowe detale. Modelowanie
 	Nasz model jest gotowy! :)
 	
 ## Asset browser
-Jeżeli utworzony przez nas model nas zadowala i uznajemy że jest gotowy możemy go zamienić na asset. Łatwo zauważyć, że gdy klikamy w jakiś obiekt na viewportcie w Object Mode to nie zaznacza nam się cała kolekcja, tylko dokładny obiekt w który kliknięto. Zamiana modelu na asset pozwoli korzystać z niego jako z jednej, wspólnej całości.
+Jeżeli utworzony przez nas model nas zadowala i uznajemy że jest gotowy możemy go zamienić na asset. Łatwo zauważyć, że gdy klikamy w jakiś obiekt na viewportcie w Object Mode to nie zaznacza nam się cała kolekcja, tylko specyficzny obiekt w który kliknięto. Zamiana modelu na asset pozwoli korzystać z niego jako z jednej, wspólnej całości.
 
 <video controls>
 <source src="../../assets/vid/blockout/asset-browser.webm" type="video/mp4">
@@ -156,7 +156,7 @@ Jesteśmy w stanie okrągły kształt opisać kanciastymi formami (w tym przypad
 	Obserwacje:
 
 	- drzewa nie idą prosto do góry - **przechylają się**
-	- jest dużo gałęzi - nie tylko trzy główne, ale również wchodzące w nich skład rozgałęzienia
+	- jest dużo gałęzi - nie tylko trzy główne, ale również wchodzące w ich skład rozgałęzienia
 	- gałęzie nie idą tylko do góry, mogę iść też w bok 
 	- gałęzie są duże, o wiele bardziej przerastające pień
 	- **proporcje**: wysokość drzewa = 6x wysokość pnia
